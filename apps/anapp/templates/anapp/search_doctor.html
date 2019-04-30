@@ -1,0 +1,32 @@
+{% extends 'anapp/base.html' %}
+{% load static %}
+
+{% block title %}
+  AnApp | Search Doctor
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <form method="POST" action="{% url 'feedback:search_doctor' %}" novalidate>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <!-- <input type="submit" class="btn btn-outline-info mt-3" id="mySearch" value="Search" /> -->
+    </form>
+    <div id="results"></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+  <script>
+    $(document).ready(function(){
+        $('#id_doctor_name').keyup(function() {
+            q = $('#id_doctor_name').val();
+            $('#results').html('&nbsp;').load("{% url "feedback:validate_doctorname" %}?q=" +q);
+        });
+    });
+  </script>
+{% endblock %}

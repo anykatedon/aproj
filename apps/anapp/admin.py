@@ -9,7 +9,7 @@ class DoctorAdmin(admin.ModelAdmin):
 class FeedbackAdmin(admin.ModelAdmin):
     list_display = ('doctor', 'patient_name', 'feedback_date', 'satisfied',)
     list_filter = ('doctor', 'feedback_date',)
-    search_fields = ('doctor__name',)
+    search_fields = ('doctor__doctor_name',)
 
 
 admin.site.register(Doctor, DoctorAdmin)
