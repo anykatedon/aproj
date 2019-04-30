@@ -1,0 +1,15 @@
+{% extends 'anapp/base.html' %}
+{% load static %}
+
+{% block title %}
+  AnApp | Thank You
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8 mt-5">
+    <h1>Thank you for your feedback...</h1>
+    <p><a href="{% url 'feedback:home' %}">Post feedback again?</a></p>
+  </div>
+</div>
+{% endblock %}

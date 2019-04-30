@@ -1,0 +1,20 @@
+{% extends 'anapp/base.html' %}
+{% load static %}
+
+{% block title %}
+  AnApp | Feedback Form
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <form action="{% url 'feedback:home' %}" method="POST" novalidate>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" class="btn btn-outline-info my-5" value="Submit Feedback" />
+    </form>
+  </div>
+</div>
+{% endblock %}
